@@ -1,0 +1,20 @@
+software =
+{
+    version = "MIDIGURDY_VERSION";
+
+    files: (
+        {
+            filename = "datafs.tar.gz";
+            type = "archive";
+            filesystem = "ext4";
+            path = "/data/";
+        }
+    );
+
+    scripts: (
+        {
+            filename = "data_cleanup.sh";
+            type = "shellscript";
+        }
+    );
+}

@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PRCTL
+	bool "python-prctl"
+    select BR2_PACKAGE_LIBCAP
+	help
+	  Python(ic) interface to the linux prctl syscall.
+
+	  http://github.com/seveas/python-prctl

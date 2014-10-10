@@ -1,0 +1,43 @@
+software =
+{
+    version = "MIDIGURDY_VERSION";
+
+    stable:
+    {
+        main:
+        {
+            images: (
+                {
+                    filename = "rootfs.ext2.gz";
+                    device = "/dev/mmcblk0p1";
+                    compressed = true;
+                }
+            );
+
+            uboot: (
+                {
+                    name = "tmpbootpart";
+                    value = "1";
+                }
+            );
+        };
+
+        alt:
+        {
+            images: (
+                {
+                    filename = "rootfs.ext2.gz";
+                    device = "/dev/mmcblk0p2";
+                    compressed = true;
+                }
+            );
+
+            uboot: (
+                {
+                    name = "tmpbootpart";
+                    value = "2";
+                }
+            );
+        };
+    };
+}

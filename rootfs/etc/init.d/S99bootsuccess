@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Mark this partition as "booted successfully"
+#
+
+case "$1" in
+    start)
+        # make sure the mgurdy main program is running before setting
+        # the boot partition after an upgrade
+        if /etc/init.d/S00mgurdy status > /dev/null; then
+            echo "MidiGurdy is running"
+        else
+            echo "MidiGurdy is not running!"
+            exit 1
+        fi
+
+        if grep -q root=/dev/mmcblk0p1 /proc/cmdline; then
+            BOOTPART=1
+        else
+            BOOTPART=2
+        fi
+
+        CURRENT=`fw_printenv -n bootpart`
+
+        if [ "$CURRENT" != "$BOOTPART" ]; then
+            echo "Updating boot partition"
+            fw_setenv bootpart $BOOTPART
+        fi
+        ;;
+    stop)
+        ;;
+    restart|reload)
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?

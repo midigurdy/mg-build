@@ -1,0 +1,4 @@
+config BR2_PACKAGE_PYTHON_SF2UTILS
+	bool "python-sf2utils"
+	help
+	  soundfont utilities

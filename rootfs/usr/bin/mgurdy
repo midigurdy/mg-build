@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# load required driver modules
+modprobe mgurdy_keys adc_offset=40
+modprobe mlx90363 mlx_hyst=1 mlx_filter=3
+modprobe ssd1307fb refreshrate=25
+
+# (re-)display splash image
+cat /boot/splash.mono > /dev/fb0
+
+# mgurdy should run on second CPU
+taskset 0x2 /usr/bin/mgurdy.py $*
+if [ $? -eq 2 ]; then
+   /usr/bin/mgmessage.py --font-size=3 "Fatal Error!"
+fi

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBMGURDY
+	bool "libmgurdy"
+	help
+      Provides a shared library containing the core MidiGurdy functions that
+      are performance critical and therefor implemented in C instead of Python.

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_MGWEB
+	bool "mgweb"
+	help
+      Provides the MidiGurdy web interface

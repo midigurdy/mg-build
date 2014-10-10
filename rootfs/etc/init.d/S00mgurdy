@@ -1,0 +1,33 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        printf "Starting mgurdy\n"
+        /usr/bin/mgurdy &> /dev/null &
+        ;;
+    stop)
+        printf "Stopping mgurdy drivers\n"
+        killall -q mgurdy
+        killall -q mg-main
+        killall -q python3
+        ;;
+    restart|reload)
+        "$0" stop
+        "$0" start
+        ;;
+    status)
+	if ps -T | grep mg-main | grep -q -v grep; then
+            printf "running\n"
+            exit 0
+        else
+	    printf "not running\n"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+exit $?
+

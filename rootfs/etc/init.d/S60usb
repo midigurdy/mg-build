@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Load USB networking module
+#
+
+case "$1" in
+    start)
+        echo "Starting USB networking"
+        /usr/bin/mgusb_hotplug.sh
+
+        echo "Loading USB audio support"
+        modprobe snd_usb_audio
+        ;;
+    stop)
+        ;;
+    restart|reload)
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?

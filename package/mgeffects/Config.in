@@ -1,0 +1,4 @@
+config BR2_PACKAGE_MGEFFECTS
+	bool "mgeffects"
+	help
+      Provides LADSPA effects for the MidiGurdy
