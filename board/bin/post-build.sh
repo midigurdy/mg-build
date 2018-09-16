@@ -18,14 +18,15 @@ MKIMAGE=$HOST_DIR/usr/bin/mkimage
 # Compile u-boot boot script
 $MKIMAGE -A arm -O linux -T script -C none -d $2/board/uboot/boot.cmd $1/boot/boot.scr
 
-# Fix ssh host key permissions
-find $1/etc/ssh -name "*key" -exec chmod 600 {} \;
-
 VERSION=`cat $1/etc/mg-version`
 
 # Write the current version to the splash image and convert it to mono (for /dev/fb0)
 # and raw (for direkt i2c transfer) formats
 convert $2/board/splash/base.bmp -fill black -font $2/board/splash/font.bdf -pointsize 7 -draw "text 30,28 'Version $VERSION'" $1/boot/splash.mono
+if [ $? -ne 0 ]; then
+        echo "Splash image creation failed"
+        exit 1;
+fi
 $2/board/splash/ssd1307.py $1/boot/splash.mono $1/boot/splash.raw
 
 # Write current version to swupdate description and copy to image dir
