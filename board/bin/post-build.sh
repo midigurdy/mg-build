@@ -29,6 +29,15 @@ if [ $? -ne 0 ]; then
 fi
 $2/board/splash/ssd1307.py $1/boot/splash.mono $1/boot/splash.raw
 
+# Copy OpenMP library from toolchain to target (buildroot still cant do this automatically?)
+for lib in `find $HOST_DIR -name "libgomp.so*" | grep sysroot`; do
+    cp $lib $TARGET_DIR/lib/`basename $lib`
+    if [ $? -ne 0 ]; then
+            echo "Unable to copy OpenMP library files!"
+            exit 1;
+    fi
+done
+
 # Write current version to swupdate description and copy to image dir
 cat $2/board/swupdate/system-sw-description | sed "s/MIDIGURDY_VERSION/$VERSION/" > $BINARIES_DIR/system-sw-description
 cat $2/board/swupdate/data-sw-description | sed "s/MIDIGURDY_VERSION/$VERSION/" > $BINARIES_DIR/config-sw-description
