@@ -1,0 +1,13 @@
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index a4ab06964e..7679e367ef 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -2,6 +2,8 @@
+ # SPDX-License-Identifier:	GPL-2.0+
+ #
+ 
++dtb-y += $(shell echo $(CONFIG_DEFAULT_DEVICE_TREE)).dtb
++
+ dtb-$(CONFIG_AT91FAMILY) += at91sam9260-smartweb.dtb \
+ 	at91sam9g20-taurus.dtb \
+ 	at91sam9g45-corvus.dtb \
