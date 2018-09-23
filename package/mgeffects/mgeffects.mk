@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MGEFFECTS_VERSION = v1.1.3
+MGEFFECTS_VERSION = v1.1.4
 MGEFFECTS_SITE = $(call github,midigurdy,mg-effects,$(MGEFFECTS_VERSION))
 MGEFFECTS_INSTALL_STAGING = NO
 MGEFFECTS_INSTALL_TARGET = YES
