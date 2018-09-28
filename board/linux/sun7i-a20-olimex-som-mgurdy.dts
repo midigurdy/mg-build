@@ -177,17 +177,17 @@ rotary0: rotary@0 {
 
 		 stringmod1 {
 			 label = "String Mod1 BTN";
-			 mgurdy,state-code = <124>;
-			 mgurdy,short-code = <125>;
-			 mgurdy,long-code = <126>;
+			 mgurdy,state-code = <127>;
+			 mgurdy,short-code = <128>;
+			 mgurdy,long-code = <129>;
 			 gpios = <&pio 7 18 GPIO_ACTIVE_LOW>; /* PH18 */
 		 };
 
 		 stringmod2 {
 			 label = "String Mod2 BTN";
-			 mgurdy,state-code = <127>;
-			 mgurdy,short-code = <128>;
-			 mgurdy,long-code = <129>;
+			 mgurdy,state-code = <124>;
+			 mgurdy,short-code = <125>;
+			 mgurdy,long-code = <126>;
 			 gpios = <&pio 7 19 GPIO_ACTIVE_LOW>; /* PH19 */
 		 };
 	 };
