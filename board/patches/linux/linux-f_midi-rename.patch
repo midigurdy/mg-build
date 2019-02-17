@@ -1,0 +1,13 @@
+diff --git a/drivers/usb/gadget/function/f_midi.c b/drivers/usb/gadget/function/f_midi.c
+index 71cf552b8828..abd475d7376b 100644
+--- a/drivers/usb/gadget/function/f_midi.c
++++ b/drivers/usb/gadget/function/f_midi.c
+@@ -210,7 +210,7 @@ static struct usb_ms_endpoint_descriptor_16 ms_in_desc = {
+ #define STRING_FUNC_IDX			0
+ 
+ static struct usb_string midi_string_defs[] = {
+-	[STRING_FUNC_IDX].s = "MIDI function",
++	[STRING_FUNC_IDX].s = "MidiGurdy MIDI Port",
+ 	{  } /* end of list */
+ };
+ 
