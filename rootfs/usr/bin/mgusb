@@ -14,15 +14,15 @@ mgusb_stop() {
         echo "" > ${G}/UDC
     fi
 
-    # rm -rf ${G}/configs/c.1/midi.usb0
+    rm -rf ${G}/configs/c.1/midi.usb0
     rm -rf ${G}/configs/c.1/ecm.usb0
 
-    # rm -rf ${G}/configs/c.2/midi.usb0
+    rm -rf ${G}/configs/c.2/midi.usb0
     # rm -rf ${G}/configs/c.2/ecm.usb0
     rm -rf ${G}/os_desc/c.2
     rm -rf ${G}/configs/c.2/rndis.usb0
 
-    # rmdir ${G}/functions/midi.usb0
+    rmdir ${G}/functions/midi.usb0
     rmdir ${G}/functions/rndis.usb0
     rmdir ${G}/functions/ecm.usb0
 
@@ -50,17 +50,18 @@ mgusb_start() {
         fi
     fi
 
-    device="0x3001" # increment on breaking change
+    device="0x3002" # increment on breaking change
     ms_vendor_code="0xcd" # Microsoft
     ms_qw_sign="MSFT100" # also Microsoft (if you couldn't tell)
     ms_compat_id="RNDIS" # matches Windows RNDIS Drivers
     ms_subcompat_id="5162001" # matches Windows RNDIS 6.0 Driver
     usb_ver="0x0200" # USB 2.0
-    dev_class="2" # Communications
 
     mkdir ${G}
     echo "${usb_ver}" > ${G}/bcdUSB
-    echo "${dev_class}" > ${G}/bDeviceClass
+    echo "0xEF" > ${G}/bDeviceClass
+    echo "0x02" > ${G}/bDeviceSubClass
+    echo "0x01" > ${G}/bDeviceProtocol
     echo "0x05e8" > ${G}/idVendor
     echo "0xa4a1" > ${G}/idProduct
     echo "${device}" > ${G}/bcdDevice
@@ -92,8 +93,8 @@ mgusb_start() {
     echo "0a:e8:92:78:32:06" > ${G}/functions/ecm.usb0/dev_addr
 
     # MIDI Function
-    #mkdir ${G}/functions/midi.usb0
-    #echo "midigurdy" ${G}/functions/midi.usb0/id
+    mkdir ${G}/functions/midi.usb0
+    echo "midigurdy" > ${G}/functions/midi.usb0/id
 
     # CONFIG 1: CDC/ECM + MIDI
     mkdir ${G}/configs/c.1
@@ -102,7 +103,7 @@ mgusb_start() {
     echo 1 > ${G}/configs/c.1/MaxPower
 
     ln -s ${G}/functions/ecm.usb0 ${G}/configs/c.1
-    # ln -s ${G}/functions/midi.usb0 ${G}/configs/c.1
+    ln -s ${G}/functions/midi.usb0 ${G}/configs/c.1
 
     # CONFIG 2: RNDIS + MIDI
     mkdir ${G}/configs/c.2
@@ -112,8 +113,7 @@ mgusb_start() {
 
     ln -s ${G}/functions/rndis.usb0 ${G}/configs/c.2
     ln -s ${G}/configs/c.2 ${G}/os_desc
-    # ln -s ${G}/functions/ecm.usb0 ${G}/configs/c.1
-    # ln -s ${G}/functions/midi.usb0 ${G}/configs/c.1
+    ln -s ${G}/functions/midi.usb0 ${G}/configs/c.2
 
     # BIND
     echo musb-hdrc.1.auto > ${G}/UDC
