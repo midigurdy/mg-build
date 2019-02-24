@@ -5,8 +5,14 @@
 
 case "$1" in
     start)
-        echo "Starting USB networking"
-        /usr/bin/mgusb_hotplug.sh start
+        echo "Configuring USB gadget"
+        /usr/bin/mgusb_gadget.sh start
+
+        # make sure mgurdy core knows current usb configuration
+        /usr/bin/mdev_extcon.sh
+
+        echo "Configuring USB networking"
+        /usr/bin/mgusb_network.sh start
 
         echo "Loading USB audio support"
         modprobe snd_usb_audio

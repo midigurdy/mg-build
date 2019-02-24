@@ -3,8 +3,6 @@
 if [ "$1" == "start" ]; then
     modprobe bridge
 
-    /usr/bin/mgusb start
-
     /usr/sbin/brctl addbr br0
     /usr/sbin/brctl addif br0 usb0
     /usr/sbin/brctl addif br0 usb1
@@ -13,7 +11,7 @@ if [ "$1" == "start" ]; then
     /sbin/ifup br0
 
     # make sure leases file exists, busybox bails out otherwise
-    killall -9 udhcpd
+    killall -q -9 udhcpd
     touch /tmp/udhcpd.leases
     /usr/sbin/udhcpd -S /etc/udhcpd.br0.conf
 else
@@ -24,6 +22,4 @@ else
     /usr/sbin/brctl delif br0 usb0
     /usr/sbin/brctl delif br0 usb1
     /usr/sbin/brctl delbr br0
-
-    /usr/bin/mgusb stop
 fi
