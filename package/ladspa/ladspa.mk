@@ -5,7 +5,7 @@
 #
 ################################################################################
 
-LADSPA_VERSION = 1.13
+LADSPA_VERSION = 1.15
 LADSPA_SOURCE = ladspa_sdk_$(LADSPA_VERSION).tgz
 LADSPA_SITE = http://www.ladspa.org/download
 LADSPA_INSTALL_STAGING = YES

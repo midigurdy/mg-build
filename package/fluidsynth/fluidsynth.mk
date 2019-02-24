@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-FLUIDSYNTH_VERSION = v2.0.0
+FLUIDSYNTH_VERSION = v2.0.4
 FLUIDSYNTH_SITE = $(call github,FluidSynth,fluidsynth,$(FLUIDSYNTH_VERSION))
 FLUIDSYNTH_INSTALL_STAGING = YES
 FLUIDSYNTH_INSTALL_TARGET = YES
