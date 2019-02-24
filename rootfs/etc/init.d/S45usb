@@ -6,7 +6,7 @@
 case "$1" in
     start)
         echo "Starting USB networking"
-        /usr/bin/mgusb_hotplug.sh
+        /usr/bin/mgusb_hotplug.sh start
 
         echo "Loading USB audio support"
         modprobe snd_usb_audio

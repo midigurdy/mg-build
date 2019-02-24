@@ -1,12 +1,6 @@
 auto lo
 iface lo inet loopback
 
-iface usb0 inet static
+iface br0 inet static
 address 10.10.10.10
 netmask 255.255.255.0
-wait-delay 10
-
-iface usb1 inet static
-address 10.10.10.10
-netmask 255.255.255.0
-wait-delay 10

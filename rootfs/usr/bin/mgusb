@@ -18,7 +18,6 @@ mgusb_stop() {
     rm -rf ${G}/configs/c.1/ecm.usb0
 
     rm -rf ${G}/configs/c.2/midi.usb0
-    # rm -rf ${G}/configs/c.2/ecm.usb0
     rm -rf ${G}/os_desc/c.2
     rm -rf ${G}/configs/c.2/rndis.usb0
 
