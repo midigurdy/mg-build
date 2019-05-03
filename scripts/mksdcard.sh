@@ -1,12 +1,12 @@
 #!/bin/bash
 
-MG=/home/marcus/mg
+MG=/home/marcus/mgurdy
 DEV=/dev/mmcblk0
-IMAGES=$MG/output-olimex-som/images
+IMAGES=$MG/build/output/images
 
 dd if=/dev/zero of=$DEV bs=1M count=1
 
-sfdisk $DEV < $MG/external/board/sdcard.sfdisk
+sfdisk $DEV < $MG/mg-build/board/sdcard.sfdisk
 
 # stride = page size / fs block size (4096)
 # stripe-width = erase block size / page size
