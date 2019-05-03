@@ -57,18 +57,22 @@ if [ "X${ACTION}" == "Xadd" ] ; then
    # Mount the partition
    mount /dev/${MDEV} ${mountdir}/${MDEV}
 
-   # Attempt to find the latest update file on the drive, and start the upgrade if found
+   # Attempt to find the latest version of the update files on the drive, and start the upgrade if found
    # sed - remove leading path from filename
    # sort - reverb sort by version numbers (three fields, offset first field by length of "midigurdy-" string)
    # head - return only the first result
-   UPDATE_FILE=$(
-        find ${mountdir}/${MDEV} -name "midigurdy-*.swu" 2> /dev/null \
-        | sed -e "s#${mountdir}/${MDEV}/##" \
-        | sort -t . -k 1.11,1nr -k 2,2nr -k 3,3nr \
+   LATEST_VERSION=$(
+        find ${mountdir}/${MDEV} -maxdepth 1 -name "midigurdy-*.swu" 2> /dev/null \
+        | sed -r -e 's/.*-([0-9]+\.[0-9]+\.[0-9A-Za-z-]+).swu/\1/' \
+        | sed -r -e 's/-([a-zA-Z]+)([0-9]*)/.\1.\2/' \
+        | sed -r -e 's/([0-9]+\.[0-9]+\.[0-9]+)$/\1.zz.9999/' \
+        | sort -t . -k1,1nr -k2,2nr -k3,3nr -k4,4r -k5,5nr \
+        | sed -r -e 's/\.zz\.9999//' \
+        | sed -r -e 's/\.([a-zA-Z]+)\.([0-9]*)/-\1\2/' \
         | head -1)
-   if [ "${UPDATE_FILE}" ]; then
-       UPDATE_VERSION=$(echo "${UPDATE_FILE}" | sed -r -e 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
-       mgupdate.sh ${mountdir}/${MDEV}/${UPDATE_FILE} /dev/${MDEV} "${UPDATE_VERSION}" &
+   if [ "${LATEST_VERSION}" ]; then
+       UPDATE_FILE="midigurdy-${LATEST_VERSION}.swu"
+       mgupdate.sh ${mountdir}/${MDEV}/${UPDATE_FILE} /dev/${MDEV} "${LATEST_VERSION}" &
    fi
 
 # The "remove" action.
