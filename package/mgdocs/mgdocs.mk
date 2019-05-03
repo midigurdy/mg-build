@@ -22,6 +22,14 @@ define MGDOCS_INSTALL_TARGET_CMDS
     cp -r $(@D)/build/singlehtml/* $(TARGET_DIR)/srv/www/manual/en/singlehtml/
     cp -r $(@D)/build/latex/midigurdy_manual.pdf $(TARGET_DIR)/srv/www/manual/en/download/
     cp -r $(@D)/build/epub/midigurdy_manual.epub $(TARGET_DIR)/srv/www/manual/en/download/
+    find $(TARGET_DIR)/srv/www/manual/en/ -wholename "**/fonts/**.ttf" -delete
+    find $(TARGET_DIR)/srv/www/manual/en/ -wholename "**/fonts/**.eot" -delete
+    find $(TARGET_DIR)/srv/www/manual/en/ -wholename "**/fonts/**.svg" -delete
+    find $(TARGET_DIR)/srv/www/manual/en/ -wholename "**/fonts/**.woff2" -delete
+    rm -rf $(TARGET_DIR)/srv/www/manual/en/singlehtml/_static/
+    rm -rf $(TARGET_DIR)/srv/www/manual/en/singlehtml/_images/
+    ln -s ../html/_static $(TARGET_DIR)/srv/www/manual/en/html/_static
+    ln -s ../html/_images $(TARGET_DIR)/srv/www/manual/en/html/_images
 endef
 
 $(eval $(generic-package))
