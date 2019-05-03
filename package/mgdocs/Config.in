@@ -1,0 +1,5 @@
+config BR2_PACKAGE_MGDOCS
+	bool "mgdocs"
+	help
+      Provides the MidiGurdy online documentation
+
