@@ -21,4 +21,12 @@ dd if=$IMAGES/uboot-env.bin of=$DEV bs=1024 seek=544
 
 # Copy system partition
 dd if=$IMAGES/rootfs.ext2 of=${DEV}p1 bs=16M
+
+# Copy initial data
+mount ${DEV}p3 /mnt
+mkdir -p /mnt/config
+mkdir -p /mnt/sounds
+cp ${MG}/mg-initialdata/data/sounds/*.sf2 /mnt/sounds/
+umount /mnt
+
 sync
