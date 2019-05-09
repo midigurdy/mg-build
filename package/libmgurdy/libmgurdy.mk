@@ -5,7 +5,7 @@
 #
 ################################################################################
 
-LIBMGURDY_VERSION = dbf001c5324664af4ad8db3023072e709b276df6
+LIBMGURDY_VERSION = 44bba87c9d66add22179d7243d728865a64cb7cc
 LIBMGURDY_STRIP_COMPONENTS = 2
 LIBMGURDY_EXCLUDES = mgurdy/
 LIBMGURDY_SITE = $(call github,midigurdy,mg-core,$(LIBMGURDY_VERSION))
