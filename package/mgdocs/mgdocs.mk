@@ -3,8 +3,7 @@
 # The MidiGurdy documentation
 #
 ################################################################################
-
-MGDOCS_VERSION = c34128b1ab3b8ac258b942447bee0115caaa8e44
+MGDOCS_VERSION = fa7bade4e576128c7e16a475183b08c2174b7691
 MGDOCS_SITE = $(call github,midigurdy,mg-docs,$(MGDOCS_VERSION))
 MGDOCS_INSTALL_STAGING = NO
 MGDOCS_INSTALL_TARGET = YES

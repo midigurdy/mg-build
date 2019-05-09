@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_MGURDY_VERSION = v1.1.6
+PYTHON_MGURDY_VERSION = dbf001c5324664af4ad8db3023072e709b276df6
 PYTHON_MGURDY_STRIP_COMPONENTS = 2
 PYTHON_MGURDY_EXCLUDES = mgurdy-lib/
 PYTHON_MGURDY_SITE = $(call github,midigurdy,mg-core,$(PYTHON_MGURDY_VERSION))
