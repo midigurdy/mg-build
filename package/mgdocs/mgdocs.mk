@@ -10,7 +10,10 @@ MGDOCS_INSTALL_TARGET = YES
 MGDOCS_AUTORECONF = NO
 
 define MGDOCS_BUILD_CMDS
-    $(MAKE) -C $(@D) tiny-release
+    $(MAKE) -C $(@D) clean-all
+    $(MAKE) -C $(@D) -e DOCLANG=en tiny-release
+    $(MAKE) -C $(@D) clean
+    $(MAKE) -C $(@D) -e DOCLANG=fr tiny-release
 endef
 
 define MGDOCS_INSTALL_TARGET_CMDS
