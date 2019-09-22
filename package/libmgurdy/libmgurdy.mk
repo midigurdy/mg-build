@@ -23,6 +23,7 @@ endef
 
 define LIBMGURDY_INSTALL_TARGET_CMDS
     $(INSTALL) -D -m 0755 $(@D)/build/libmgurdy.so $(TARGET_DIR)/usr/lib
+    $(INSTALL) -D -m 0755 $(@D)/build/mgcrashdump $(TARGET_DIR)/usr/bin
 endef
 
 define LIBMGURDY_INSTALL_STAGING_CMDS
