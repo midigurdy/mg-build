@@ -7,10 +7,6 @@
 
 case "$1" in
     start)
-        # make sure we see segfaults in syslog.
-        # FIXME: this should really be set via kernel command line
-        echo 1 > /proc/sys/kernel/print-fatal-signals
-
         # Set IRQ and thread priorities
         /usr/bin/mgprio.sh
 
