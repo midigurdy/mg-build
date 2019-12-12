@@ -56,7 +56,6 @@
 	aliases {
 		serial0 = &uart0;
 		spi0 = &spi1;
-		spi1 = &spi2;
 	};
 
 	chosen {
@@ -395,21 +394,6 @@ rotary0: rotary@0 {
 		compatible = "mlx90363";
 		reg = <0>;
 		spi-max-frequency = <2000000>;
-	};
-};
-
-&spi2 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&spi2_pins_a>,
-		    <&spi2_cs0_pins_a>;
-	status = "okay";
-
-	spi2_0 {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		compatible = "midigurdy,spidev";
-		reg = <0>;
-		spi-max-frequency = <50000000>;
 	};
 };
 
