@@ -5,7 +5,7 @@
 #
 ################################################################################
 
-MGWEB_VERSION = v1.2.0
+MGWEB_VERSION = v1.2.3
 MGWEB_SITE = $(call github,midigurdy,mg-web,$(MGWEB_VERSION))
 MGWEB_INSTALL_STAGING = NO
 MGWEB_INSTALL_TARGET = YES
