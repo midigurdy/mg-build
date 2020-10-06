@@ -1,5 +1,5 @@
-config BR2_PACKAGE_FLUIDSYNTH
-	bool "fluidsynth"
+config BR2_PACKAGE_MG_FLUIDSYNTH
+	bool "mg-fluidsynth"
 	select BR2_PACKAGE_LIBGLIB2
 	depends on BR2_USE_WCHAR # libglib2
 	depends on BR2_TOOLCHAIN_HAS_THREADS # libglib2

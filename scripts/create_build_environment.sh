@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILDROOT_VERSION=2018.02.5
+BUILDROOT_VERSION=2020.08
 BUILDROOT_URL=https://buildroot.org/downloads/buildroot-$BUILDROOT_VERSION.tar.gz
 
 if [ ! -d $1 ]; then

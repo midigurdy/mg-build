@@ -1,4 +1,0 @@
-config BR2_PACKAGE_PYTHON_PYALSA
-	bool "python-pyalsa"
-	help
-	  Native Python alsa bindings
