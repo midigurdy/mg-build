@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MG_FLUIDSYNTH_VERSION = v2.0.5
+MG_FLUIDSYNTH_VERSION = v2.2.0
 MG_FLUIDSYNTH_SITE = $(call github,FluidSynth,fluidsynth,$(MG_FLUIDSYNTH_VERSION))
 MG_FLUIDSYNTH_INSTALL_STAGING = YES
 MG_FLUIDSYNTH_INSTALL_TARGET = YES
