@@ -5,7 +5,7 @@
 #
 ################################################################################
 
-LIBMGURDY_VERSION = v1.2.3
+LIBMGURDY_VERSION = v1.3.0
 LIBMGURDY_STRIP_COMPONENTS = 2
 LIBMGURDY_EXCLUDES = mgurdy/
 LIBMGURDY_SITE = $(call github,midigurdy,mg-core,$(LIBMGURDY_VERSION))
